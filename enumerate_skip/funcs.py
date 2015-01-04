@@ -8,12 +8,12 @@ __all__ = ["enumerate_manual", "enumerate_skip"]
 class enumerate_adjust(object):
     def __init__(self, iterable, start=0):
         self.iterable = iterable
-        self.shift = 0
-        self.adjustment = None
+        self._shift = 0
+        self._adjustment = None
         self.start = start
 
     def _adjust(self):
-        self.shift += self.adjustment
+        self._shift += self._adjustment
 
 
 class enumerate_skip(enumerate_adjust):
@@ -42,11 +42,11 @@ class enumerate_skip(enumerate_adjust):
     """
     def __init__(self, *args, **kwargs):
         super(enumerate_skip, self).__init__(*args, **kwargs)
-        self.adjustment = -1
+        self._adjustment = -1
 
     def __iter__(self):
         for index, obj in enumerate(self.iterable, self.start):
-            yield index + self.shift, obj
+            yield index + self._shift, obj
 
     def skip(self):
         """
@@ -82,12 +82,12 @@ class enumerate_manual(enumerate_adjust):
     """
     def __init__(self, *args, **kwargs):
         super(enumerate_manual, self).__init__(*args, **kwargs)
-        self.adjustment = 1
+        self._adjustment = 1
 
     def __iter__(self):
         index = self.start
         for obj in self.iterable:
-            yield index + self.shift, obj
+            yield index + self._shift, obj
 
     def advance(self):
         """
