@@ -1,0 +1,23 @@
+pkgname=enumerate_skip-git
+pkgver=1
+pkgrel=1
+pkgdesc=""
+arch=("any")
+url="https://github.com/mineo/enumerate_skip"
+license=('MIT')
+source=('git+https://github.com/mineo/enumerate_skip')
+md5sums=('SKIP')
+depends=('python2')
+makedepends=('git')
+
+pkgver(){
+  cd "${srcdir}/enumerate_skip"
+  echo "$(git describe --tags --always | sed 's/-/./g' )"
+}
+
+package() {
+  cd "${srcdir}/enumerate_skip"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
