@@ -23,7 +23,6 @@ class enumerate_skip(enumerate_adjust):
     can be useful when iterating over an iterable in a for-loop when not all
     values of the iterable are actually interesting.
 
-    >>> from __future__ import division
     >>> it = enumerate_skip(range(10))
     >>> for index, obj in it:
     ...     print("{0}, {1}".format(index, obj))
@@ -63,7 +62,6 @@ class enumerate_manual(enumerate_adjust):
     yielded. This can be useful when iterating over an iterable in a for-loop
     when not all values of the iterable are actually interesting.
 
-    >>> from __future__ import division
     >>> it = enumerate_manual(range(10))
     >>> for index, obj in it:
     ...     print("{0}, {1}".format(index, obj))
