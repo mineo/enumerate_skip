@@ -104,6 +104,7 @@ setup(name="enumerate_skip",
                    "Programming Language :: Python :: 3.3",
                    "Programming Language :: Python :: 3.4"],
       cmdclass={"version": Version, "sdist": sdist, "build": build},
-      description="",
+      description="enumerate extended to support manual advancement or skipping\
+      of the index",
       long_description=open("README.rst").read()
       )
